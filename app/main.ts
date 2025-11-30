@@ -1,5 +1,5 @@
-import { error } from "console";
 import { createInterface } from "readline";
+import { cmdManagement } from "./cmdmanagement";
 
 const terminateSignals: string[] = ["SIGINT", "SIGTERM"]
 
@@ -10,10 +10,12 @@ const rl = createInterface({
 
 let isRunning = true;
 
-async function getInput() {
+async function getInput(): Promise<string[]> {
   return new Promise((resolve) => {
     rl.question("$ ", (answer) => {
-      resolve(answer)
+      const trimmed = answer.trim();
+      const words = trimmed.split(/\s+/);
+      resolve(words)
     });
   });
 }
@@ -28,15 +30,7 @@ async function main() {
 
   while (isRunning) {
     const input = await getInput();
-    switch (input) {
-      case "exit":
-        process.exit(0);
-        break;
-
-      default:
-        console.log(`${input}: command not found`)
-        break;
-    }
+    cmdManagement.delegateAction(input)
   }
 }
 
