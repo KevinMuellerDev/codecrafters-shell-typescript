@@ -1,4 +1,5 @@
-import { echo } from "./echo";
+import typeCheck from "./commands/type";
+import echo from "./echo";
 
 interface ICmdManagement {
     delegateAction(input: string[]): void;
@@ -28,6 +29,9 @@ export const cmdManagement: ICmdManagement = {
                 break;
             case "echo":
                 echo(input);
+                break;
+            case "type":
+                typeCheck(input);
                 break;
             default:
                 console.log(`${input}: command not found`)
