@@ -1,18 +1,48 @@
+import { error } from "console";
 import { createInterface } from "readline";
+
+const terminateSignals: string[] = ["SIGINT", "SIGTERM"]
 
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 
-rl.question("$ ", (answer) => {
-  switch (answer) {
-    case "test":
-      break;
+let isRunning = true;
 
-    default:
-      console.log(`${answer}: command not found`)
-      break;
+async function getInput() {
+  return new Promise((resolve) => {
+    rl.question("$ ", (answer) => {
+      resolve(answer)
+    });
+  });
+}
+
+async function main() {
+  terminateSignals.forEach((signal) => {
+    process.on(signal, () => {
+      console.log("Shell terminated.")
+      process.exit(0);
+    })
+  })
+
+  while (isRunning) {
+    const input = await getInput();
+    switch (input) {
+      case "nsdoinsdfoskndfisdjfbgwidhfgbsdfbgsojidf":
+        break;
+
+      default:
+        console.log(`${input}: command not found`)
+        break;
+    }
   }
-  rl.close();
-});
+}
+
+main().catch((error) => {
+  console.error("Fatal error:", error);
+  process.exit(1);
+})
+
+
+
