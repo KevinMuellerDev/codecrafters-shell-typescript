@@ -30,7 +30,6 @@ async function main() {
     const input = await getInput();
     switch (input) {
       case "exit":
-        console.log("exiting shell...");
         process.exit(0);
         break;
 
