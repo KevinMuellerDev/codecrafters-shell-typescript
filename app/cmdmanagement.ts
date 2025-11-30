@@ -22,7 +22,7 @@ interface ICmdManagement {
  */
 export const cmdManagement: ICmdManagement = {
 
-    delegateAction(input) {
+    async delegateAction(input) {
         switch (input[0]) {
             case "exit":
                 process.exit(0);
@@ -31,7 +31,7 @@ export const cmdManagement: ICmdManagement = {
                 echo(input);
                 break;
             case "type":
-                typeCheck(input);
+                await typeCheck(input);
                 break;
             default:
                 console.log(`${input}: command not found`)
