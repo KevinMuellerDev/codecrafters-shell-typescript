@@ -29,7 +29,9 @@ async function main() {
   while (isRunning) {
     const input = await getInput();
     switch (input) {
-      case "nsdoinsdfoskndfisdjfbgwidhfgbsdfbgsojidf":
+      case "exit":
+        console.log("exiting shell...");
+        process.exit(0);
         break;
 
       default:
