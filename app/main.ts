@@ -6,5 +6,13 @@ const rl = createInterface({
 });
 
 rl.question("$ ", (answer) => {
+  switch (answer) {
+    case "test":
+      break;
+
+    default:
+      console.log(`${answer}: command not found`)
+      break;
+  }
   rl.close();
 });
