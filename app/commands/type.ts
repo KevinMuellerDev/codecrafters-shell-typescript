@@ -35,7 +35,13 @@ async function checkPath(input: string) {
         try {
             const files = await fs.promises.readdir(dir);
             if (files.includes(input)) {
-                return `${dir}/${input}`;
+                try {
+                    await fs.promises.access(`${dir}/${input}`, fs.constants.X_OK);
+                    return (`${dir}/${input}`)
+                } catch (error) {
+                    return undefined
+                }
+
             }
         } catch (_err) {
             // Directory doesn't exist or can't be read, continue
