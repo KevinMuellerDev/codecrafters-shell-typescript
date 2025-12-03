@@ -30,7 +30,7 @@ async function main() {
 
   while (isRunning) {
     const input = await getInput();
-    cmdManagement.delegateAction(input)
+    await cmdManagement.delegateAction(input)
   }
 }
 

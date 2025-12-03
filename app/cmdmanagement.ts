@@ -2,7 +2,7 @@ import typeCheck from "./commands/type";
 import echo from "./echo";
 
 interface ICmdManagement {
-    delegateAction(input: string[]): void;
+    delegateAction(input: string[]): Promise<void>;
 }
 
 
@@ -34,7 +34,7 @@ export const cmdManagement: ICmdManagement = {
                 await typeCheck(input);
                 break;
             default:
-                console.log(`${input}: command not found`)
+                console.log(`${input[0]}: command not found`)
                 break;
         }
     },

@@ -19,10 +19,12 @@ export default async function typeCheck(input: string[]): Promise<void> {
 
     if (!cmdExists) {
         console.log(`${command}: not found`)
-        return;
+        return
+    } else {
+        console.log(`\n${command} is ${cmdExists}`)
+        return
     }
 
-    console.log(`${command} is ${cmdExists}`)
 }
 
 async function checkPath(input: string) {
