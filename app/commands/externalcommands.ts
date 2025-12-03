@@ -1,4 +1,3 @@
-import { error } from "console";
 import { checkPath } from "./utilities";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -11,8 +10,8 @@ export async function checkExternal(input: string[]) {
 
     if (cmdExists) {
         const { stdout } = await execAsync(`${command} ${cmdArgs}`)
-        if (stdout)
-            console.log(stdout);
+        if (stdout.trim().length > 0)
+            process.stdout.write(stdout)
     } else {
         console.log(`${command}: command not found`)
     }
