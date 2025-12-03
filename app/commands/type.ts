@@ -1,6 +1,5 @@
-import { file } from "bun";
 import { cmdList } from "./commandlist";
-import fs from "fs"
+import { checkPath } from "./utilities";
 
 /**
  * Checks if a command is a shell builtin or not found.
@@ -27,26 +26,3 @@ export default async function typeCheck(input: string[]): Promise<void> {
 
 }
 
-async function checkPath(input: string) {
-    const pathEnvContent = process.env.PATH;
-    const pathDirs = pathEnvContent?.split(":") || [];
-
-    for (const dir of pathDirs) {
-        try {
-            const files = await fs.promises.readdir(dir);
-            if (files.includes(input)) {
-                try {
-                    await fs.promises.access(`${dir}/${input}`, fs.constants.X_OK);
-                    return (`${dir}/${input}`)
-                } catch (_err) {
-
-                }
-
-            }
-        } catch (_err) {
-            // Directory doesn't exist or can't be read, continue
-        }
-    }
-
-    return undefined;
-}

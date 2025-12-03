@@ -1,3 +1,4 @@
+import { checkExternal } from "./commands/externalcommands";
 import typeCheck from "./commands/type";
 import echo from "./echo";
 
@@ -34,7 +35,7 @@ export const cmdManagement: ICmdManagement = {
                 await typeCheck(input);
                 break;
             default:
-                console.log(`${input[0]}: command not found`)
+                await checkExternal(input)
                 break;
         }
     },
