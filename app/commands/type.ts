@@ -21,7 +21,7 @@ export default async function typeCheck(input: string[]): Promise<void> {
         console.log(`${command}: not found`)
         return
     } else {
-        console.log(`\n${command} is ${cmdExists}`)
+        console.log(`${command} is ${cmdExists}`)
         return
     }
 
