@@ -10,11 +10,9 @@ export async function checkExternal(input: string[]) {
     const execAsync = promisify(exec)
 
     if (cmdExists) {
-        const { stdout, stderr } = await execAsync(`${command} ${cmdArgs}`)
+        const { stdout } = await execAsync(`${command} ${cmdArgs}`)
         if (stdout)
             console.log(stdout);
-        if (stderr)
-            console.log(stderr);
     } else {
         console.log(`${command}: command not found`)
     }
