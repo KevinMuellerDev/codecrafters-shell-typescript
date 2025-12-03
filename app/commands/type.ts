@@ -38,8 +38,8 @@ async function checkPath(input: string) {
                 try {
                     await fs.promises.access(`${dir}/${input}`, fs.constants.X_OK);
                     return (`${dir}/${input}`)
-                } catch (error) {
-                    return undefined
+                } catch (_err) {
+
                 }
 
             }
