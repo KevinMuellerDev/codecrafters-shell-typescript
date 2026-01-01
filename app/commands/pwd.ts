@@ -1,5 +1,5 @@
 import { config } from "../config/config";
 
 export default function pwd(): void {
-    console.log(config.cwd);
+    console.log(process.cwd());
 }

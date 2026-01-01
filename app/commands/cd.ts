@@ -7,5 +7,5 @@ export default function cd(input: string[]) {
     if (!existsSync(path))
         console.log(`cd: ${path}: No such file or directory`)
 
-    config.cwd = path;
+    process.chdir(path)
 }

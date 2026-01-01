@@ -22,7 +22,6 @@ async function getInput(): Promise<string[]> {
 }
 
 async function main() {
-  config.cwd = process.cwd()
 
   terminateSignals.forEach((signal) => {
     process.on(signal, () => {
