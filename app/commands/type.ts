@@ -1,4 +1,4 @@
-import { cmdList } from "./commandlist";
+import { config } from "../config/config";
 import { checkPath } from "./utilities";
 
 /**
@@ -9,7 +9,7 @@ import { checkPath } from "./utilities";
 export default async function typeCheck(input: string[]): Promise<void> {
     const command = input[1];
 
-    if (cmdList.includes(command)) {
+    if (config.cmdList.includes(command)) {
         console.log(`${command} is a shell builtin`)
         return
     };

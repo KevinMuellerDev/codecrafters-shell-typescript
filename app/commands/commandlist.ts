@@ -1,1 +1,1 @@
-export const cmdList = ["echo", "type", "exit", "pwd"];
+export const cmdList = ["echo", "type", "exit", "pwd", "cd"];

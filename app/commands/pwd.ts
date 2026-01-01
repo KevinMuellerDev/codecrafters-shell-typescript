@@ -1,4 +1,5 @@
-export function pwd() {
-    const currentDirectory = process.cwd()
-    console.log(currentDirectory);
+import { config } from "../config/config";
+
+export default function pwd(): void {
+    console.log(config.cwd);
 }

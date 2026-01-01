@@ -1,5 +1,6 @@
 import { createInterface } from "readline";
 import { cmdManagement } from "./cmdmanagement";
+import { config } from "./config/config";
 
 const terminateSignals: string[] = ["SIGINT", "SIGTERM"]
 
@@ -21,6 +22,8 @@ async function getInput(): Promise<string[]> {
 }
 
 async function main() {
+  config.cwd = process.cwd()
+
   terminateSignals.forEach((signal) => {
     process.on(signal, () => {
       console.log("Shell terminated.")
