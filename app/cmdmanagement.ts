@@ -1,6 +1,7 @@
 import { checkExternal } from "./commands/externalcommands";
 import typeCheck from "./commands/type";
-import echo from "./echo";
+import { echo } from "./commands/echo";
+import { pwd } from "./commands/pwd";
 
 interface ICmdManagement {
     delegateAction(input: string[]): Promise<void>;
@@ -33,6 +34,9 @@ export const cmdManagement: ICmdManagement = {
                 break;
             case "type":
                 await typeCheck(input);
+                break;
+            case "pwd":
+                pwd();
                 break;
             default:
                 await checkExternal(input)
