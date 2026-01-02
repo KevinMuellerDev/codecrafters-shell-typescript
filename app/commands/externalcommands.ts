@@ -4,7 +4,17 @@ import { promisify } from "util";
 
 export default async function checkExternal(input: string[]) {
     const command = input[0];
-    const cmdArgs = input[1];
+    let cmdArgs: string = "";
+
+    if (command === 'cat') {
+        for (let index = 1; index < input.length; index++) {
+            cmdArgs += ` '${input[index]}'`;
+        }
+    } else {
+        cmdArgs = input.slice(1).join(" ");
+    }
+
+    console.log(cmdArgs)
     const cmdExists = await checkPath(command);
     const execAsync = promisify(exec)
 
@@ -17,6 +27,7 @@ export default async function checkExternal(input: string[]) {
             console.log(error)
             return
         }
+
     } else {
         console.log(`${command}: command not found`)
     }
