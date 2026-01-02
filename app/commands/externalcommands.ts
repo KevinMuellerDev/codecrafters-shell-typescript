@@ -17,7 +17,6 @@ export default async function checkExternal(input: string[]) {
             console.log(error)
             return
         }
-
     } else {
         console.log(`${command}: command not found`)
     }
