@@ -9,9 +9,15 @@ export default async function checkExternal(input: string[]) {
     const execAsync = promisify(exec)
 
     if (cmdExists) {
-        const { stdout } = await execAsync(`${command} ${cmdArgs}`)
-        if (stdout.trim().length > 0)
-            process.stdout.write(stdout)
+        try {
+            const { stdout } = await execAsync(`${command} ${cmdArgs}`)
+            if (stdout.trim().length > 0)
+                process.stdout.write(stdout)
+        } catch (error) {
+            console.log(`command: '${command}' is not executable`)
+            return
+        }
+
     } else {
         console.log(`${command}: command not found`)
     }

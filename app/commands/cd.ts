@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 
-export default function cd(input: string[]) {
+export default function cd(input: string[]): void {
     const path = input[1];
 
     if (path === "~") {
