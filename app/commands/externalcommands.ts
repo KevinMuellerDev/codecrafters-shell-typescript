@@ -14,7 +14,7 @@ export default async function checkExternal(input: string[]) {
             if (stdout.trim().length > 0)
                 process.stdout.write(stdout)
         } catch (error) {
-            console.log(`command: '${command}' is not executable`)
+            console.log(error)
             return
         }
 
