@@ -55,7 +55,6 @@ async function main() {
 
   while (isRunning) {
     const input = await getInput();
-    console.log(input)
     await cmdManagement.delegateAction(input)
   }
 }
