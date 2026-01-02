@@ -4,7 +4,7 @@ import { promisify } from "util";
 
 export default async function checkExternal(input: string[]) {
     const command = input[0];
-    const cmdArgs = input.slice(1).join(" ");
+    const cmdArgs = input[1];
     const cmdExists = await checkPath(command);
     const execAsync = promisify(exec)
 
