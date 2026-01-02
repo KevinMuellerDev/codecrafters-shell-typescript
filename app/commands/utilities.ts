@@ -3,7 +3,6 @@ import fs from "fs"
 export async function checkPath(input: string) {
     const pathEnvContent = process.env.PATH;
     const pathDirs = pathEnvContent?.split(":") || [];
-    console.log(pathDirs)
     for (const dir of pathDirs) {
         try {
             const files = await fs.promises.readdir(dir);
