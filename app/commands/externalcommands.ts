@@ -14,7 +14,6 @@ export default async function checkExternal(input: string[]) {
         cmdArgs = input.slice(1).join(" ");
     }
 
-    console.log(cmdArgs)
     const cmdExists = await checkPath(command);
     const execAsync = promisify(exec)
 
