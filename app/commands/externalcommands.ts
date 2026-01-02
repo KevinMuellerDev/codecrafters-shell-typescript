@@ -10,7 +10,7 @@ export default async function checkExternal(input: string[]) {
 
     if (cmdExists) {
         try {
-            const { stdout } = await execAsync(`${command} '${cmdArgs}'`)
+            const { stdout } = await execAsync(`${command} ${cmdArgs}`)
             if (stdout.trim().length > 0)
                 process.stdout.write(stdout)
         } catch (error) {
